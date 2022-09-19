@@ -1,5 +1,6 @@
 let Recroding = false
 let PermissionGived = false
+
 function RecordAudio(stream) 
 {
     if (window.URL) {
@@ -9,7 +10,7 @@ function RecordAudio(stream)
     }
 }
 
-function RecordBTClicked(e)
+function RecordBTClicked()
 {
     var FirstP = document.getElementById("FirstPID")
     if(!Recroding)
