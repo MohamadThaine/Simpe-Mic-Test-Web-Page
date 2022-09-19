@@ -1,6 +1,7 @@
 let Recroding = false
 let PermissionGived = false
-
+let [milliseconds,second,minute] = [0,0,0];
+let TimeRecording = null;
 var Stream = new MediaStream()
 
 function RecordAudio() 
@@ -46,6 +47,7 @@ function RecordMic()
         .then(function(stream) {
             Stream = stream
             RecordAudio()
+            StartTimer()
         })
         .catch(function (error)
         {
@@ -66,4 +68,35 @@ function StopRecording()
 {
     RecordAudio()
     RecordPlayer.srcObject = null;
+    clearInterval(TimeRecording)
 }
+
+function StartTimer()
+{
+    [milliseconds,second,minute] = [0,0,0];
+    if(TimeRecording != null){
+        clearInterval(TimeRecording)
+    }
+    TimeRecording = setInterval(TimeCounter,10);
+
+}
+
+function TimeCounter(){
+    let timerRef = document.getElementById('Time');
+    
+    milliseconds+=10;
+    if(milliseconds == 1000){
+    milliseconds = 0
+    second++
+    if(second == 60){
+    second = 0
+    minute++
+    if(minute == 60){
+    minute = 0}}}
+    let m = minute < 10 ? "0" + minute : minute;
+    let s = second < 10 ? "0" + second : second;
+    let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
+    timerRef.innerHTML = ` ${m} : ${s} : ${ms}`;
+}
+
+
