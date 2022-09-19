@@ -23,7 +23,7 @@ function RecordBTClicked(e)
     }
     else
     {
-        FirstP.innerHTML = "Stoped Recording"
+        FirstP.innerHTML = "Stopped Recording"
         Recroding = false
         StopRecording()
     } 
