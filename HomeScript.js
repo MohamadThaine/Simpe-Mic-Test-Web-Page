@@ -1,16 +1,23 @@
 let Recroding = false
 let PermissionGived = false
 
-function RecordAudio(stream) 
+var Stream = new MediaStream()
+
+function RecordAudio() 
 {
-    if (window.URL) {
-        RecordPlayer.srcObject = stream;
-    } else {
-        RecordPlayer.src = stream;
+    if(Recroding)
+    {
+        RecordPlayer.srcObject = Stream;
     }
+    else{
+        Stream.getTracks().forEach(function(track) {
+            track.stop();
+          });
+    }
+    
 }
 
-function RecordBTClicked()
+function RecordBTClicked(e)
 {
     var FirstP = document.getElementById("FirstPID")
     if(!Recroding)
@@ -36,23 +43,27 @@ function RecordMic()
     var FirstP = document.getElementById("FirstPID")
         navigator.mediaDevices
         .getUserMedia({audio: true, video: false})
-        .then(RecordAudio)
+        .then(function(stream) {
+            Stream = stream
+            RecordAudio()
+        })
         .catch(function (error)
         {
             PermissionGived = false
             FirstP.innerHTML = "Please Give Permission!"
             Recroding = false
+            return
         });
         PermissionGived = true
         if(!Recroding)
         {
             StopRecording()
             return
-        }
-          
+        }   
 }
 
 function StopRecording()
 {
+    RecordAudio()
     RecordPlayer.srcObject = null;
 }
