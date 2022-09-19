@@ -8,7 +8,7 @@ function RecordVideo()
 {
     if(Recroding)
     {
-        RecordPlayer.srcObject = Stream;
+        VideoPlayer.srcObject = Stream;
     }
     else{
         Stream.getTracks().forEach(function(track) {
@@ -26,7 +26,7 @@ function RecordBTClicked(e)
         OpenVideo()
         if(PermissionGived)
         {
-            FirstP.innerHTML = "Recording... (Click Record button Again to stop recording)"
+            FirstP.innerHTML = "Video Recording.."
             Recroding = true
         }
     }
@@ -40,14 +40,13 @@ function RecordBTClicked(e)
 
 function OpenVideo()
 {
-    var RecordPlayer = document.getElementById("RecordPlayer"); 
+    var VideoPlayer = document.getElementById("VideoPlayer"); 
     var FirstP = document.getElementById("FirstPID")
         navigator.mediaDevices
-        .getUserMedia({audio: true, video: false})
+        .getUserMedia({audio: false, video: true})
         .then(function(stream) {
             Stream = stream
             RecordVideo()
-            StartTimer()
         })
         .catch(function (error)
         {
@@ -67,35 +66,6 @@ function OpenVideo()
 function StopRecording()
 {
     RecordVideo()
-    RecordPlayer.srcObject = null;
+    VideoPlayer.srcObject = null;
     clearInterval(TimeRecording)
 }
-
-function StartTimer()
-{
-    [milliseconds,second,minute] = [0,0,0];
-    if(TimeRecording != null){
-        clearInterval(TimeRecording)
-    }
-    TimeRecording = setInterval(TimeCounter,10);
-
-}
-
-function TimeCounter(){
-    let timerRef = document.getElementById('Time');
-    
-    milliseconds+=10;
-    if(milliseconds == 1000){
-    milliseconds = 0
-    second++
-    if(second == 60){
-    second = 0
-    minute++
-    if(minute == 60){
-    minute = 0}}}
-    let m = minute < 10 ? "0" + minute : minute;
-    let s = second < 10 ? "0" + second : second;
-    let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
-    timerRef.innerHTML = ` ${m} : ${s} : ${ms}`;
-}
-

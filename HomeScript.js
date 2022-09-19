@@ -10,6 +10,10 @@ function ChangePage(e)
     {
         PagePath = "HTML-Files/MouseTester.html"
     }
+    else if(e.name = "Keyboard-Test-BT")
+    {
+        PagePath = "HTML-Files/CameraTester.html"
+    }
     var Page = `<object class="PageObject" type="text/html" data=${PagePath}></object>`;
     ConterterDiv.innerHTML = Page
 }
