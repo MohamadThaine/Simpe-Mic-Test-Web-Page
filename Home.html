@@ -1,21 +1,20 @@
 <html>
     <link rel="stylesheet" href="HomeStyle.css">
     <script src="HomeScript.js"></script>
-    <title>Mic Test</title>
+    <title>Componets Tester</title>
+    <link rel="icon" href="Imgs/PcTesting.png">
     <body>
-        <div class="MainDiv">
-            <div class="RecordDiv">
-                <p class="MainP">Mic Test</p>
-                <p class="FirstP" id="FirstPID">
-                    Click Record button to record your voice
-                </p>
-                <button id="RecordBT" onclick="RecordBTClicked(this)">
-                    <img src="Imgs/record.png" width="20" height="20">
-                    <p>&nbsp;| Record</p>
-                </button>
-                <p id="Time">00:00:000</p>
+        <div class="MainDiv" id="MainDivID">
+            <div class="SecondDiv">
+                <div id="Contenter">
+                    <p style="font-size: x-large">Choose which device you like to test</p>                 
+                </div>
                 <br>
-                <audio id="RecordPlayer" controls autoplay>
+                <div class="PageBTConterner">
+                    <button name="Mic-Test-BT" onclick="ChangePage(this)">Mic Test</button> 
+                    <p>&nbsp; &nbsp; &nbsp;</p>
+                    <button name="Mouse-Test-BT" onclick="ChangePage(this)">Mouse Test</button>
+                </div>
             </div>
             <p class="LastP">Made by <a href="https://github.com/MohamadThaine" target="_blank">Mohamad Thaine</a></p>
         </div>

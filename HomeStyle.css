@@ -8,18 +8,23 @@ html{
     overflow: hidden;
 }
 
-.MainP{
-    font-size: xx-large;
-    font-weight: bold;
+.SecondDiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
 }
 
-.RecordDiv{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
+.PageBTConterner{
+    display: flex;
+    justify-content: center;
+}
+
+.PageObject{
+    width: 500px;
+    height: 441px;
 }
 Button{
 align-items: center;
@@ -70,23 +75,15 @@ p{
     color: white;
     font-family:'Poppins'; 
 }
-.FirstP{
-    font-size: x-large;
-    font-weight: bold;
-}
-
-.LastP{
-  position: fixed;
-  left: 50%;
-  bottom: 20px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-}
-
-#RecordPalyer{
-    background-color: white;
-}
 
 a{
     color: #000080;
 }
+
+.LastP{
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+  }

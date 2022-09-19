@@ -1,0 +1,22 @@
+<html>
+    <link rel="stylesheet" href="../CSS-Files/MicTester.css">
+    <script src="../JS-Files\MicTester.js"></script>
+    <title>Mic Test</title>
+    <link rel="icon" href="Imgs/mic.png">
+    <body>
+        <div class="RecordDiv">
+            <p class="MainP">Mic Test</p>
+            <p class="FirstP" id="FirstPID">
+                Click Record button to record your voice
+            </p>
+            <button id="RecordBT" onclick="RecordBTClicked(this)">
+                <img src="../Imgs/record.png" width="20" height="20">
+                <p>&nbsp;| Record</p>
+            </button>
+            <p id="Time">00:00:000</p>
+            <br>
+            <audio id="RecordPlayer" controls autoplay></audio>
+            <br>
+        </div>
+    </body>
+</html>
