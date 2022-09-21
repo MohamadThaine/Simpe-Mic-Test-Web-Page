@@ -10,7 +10,7 @@ function ChangePage(e)
     {
         PagePath = "HTML-Files/MouseTester.html"
     }
-    else if(e.name = "Keyboard-Test-BT")
+    else if(e.name == "Camera-Test-BT")
     {
         PagePath = "HTML-Files/CameraTester.html"
     }

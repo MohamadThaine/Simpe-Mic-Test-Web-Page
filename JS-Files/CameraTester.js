@@ -1,11 +1,9 @@
 let Recroding = false
 let PermissionGived = false
-let [milliseconds,second,minute] = [0,0,0];
-let TimeRecording = null;
 var Stream = new MediaStream()
-
 function RecordVideo() 
 {
+    var VideoPlayer = document.getElementById("VideoPlayer"); 
     if(Recroding)
     {
         VideoPlayer.srcObject = Stream;
@@ -14,6 +12,7 @@ function RecordVideo()
         Stream.getTracks().forEach(function(track) {
             track.stop();
           });
+          VideoPlayer.srcObject = null;
     }
     
 }
@@ -34,13 +33,12 @@ function RecordBTClicked(e)
     {
         FirstP.innerHTML = "Stopped Recording"
         Recroding = false
-        StopRecording()
+        RecordVideo()
     } 
 }
 
 function OpenVideo()
 {
-    var VideoPlayer = document.getElementById("VideoPlayer"); 
     var FirstP = document.getElementById("FirstPID")
         navigator.mediaDevices
         .getUserMedia({audio: false, video: true})
@@ -50,6 +48,7 @@ function OpenVideo()
         })
         .catch(function (error)
         {
+            console.log(error)
             PermissionGived = false
             FirstP.innerHTML = "Please Give Permission!"
             Recroding = false
@@ -58,14 +57,8 @@ function OpenVideo()
         PermissionGived = true
         if(!Recroding)
         {
-            StopRecording()
+            RecordVideo()
             return
         }   
 }
 
-function StopRecording()
-{
-    RecordVideo()
-    VideoPlayer.srcObject = null;
-    clearInterval(TimeRecording)
-}

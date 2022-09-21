@@ -83,7 +83,6 @@ function StartTimer()
 
 function TimeCounter(){
     let timerRef = document.getElementById('Time');
-    
     milliseconds+=10;
     if(milliseconds == 1000){
     milliseconds = 0

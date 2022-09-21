@@ -1,11 +1,11 @@
-let i = 0
+let ClickCounter = 0
 
 function OnMouseDown()
 {
     let ButtonPressed = "You Clicked "
     let Counter = document.getElementById("TimesClicked")
-    i = i + 1
-    Counter.innerHTML = i
+    ClickCounter = ClickCounter + 1
+    Counter.innerHTML = ClickCounter
     switch (event.which) {
         case 1:
             ButtonPressed += "Left Button"
